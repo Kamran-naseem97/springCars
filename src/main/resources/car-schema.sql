@@ -1,0 +1,6 @@
+DROP TABLE if EXISTS `car` CASCADE;
+CREATE TABLE `car` (
+    `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
+    `make_model` VARCHAR(255),
+    `power` INTEGER
+);

@@ -28,7 +28,7 @@ public class CarController {
     }
 
     @GetMapping("/get/{id}")
-    public Car getById(@PathVariable Integer id){
+    public Car getById(@PathVariable int id){
         System.out.println("Car with index " + id + " " + this.service.getById(id));
         return this.service.getById(id);
     }
@@ -59,14 +59,14 @@ public class CarController {
 
     @PatchMapping("/update/{id}")
     public Car update(
-            @PathVariable Integer id,
+            @PathVariable int id,
             @RequestParam (value = "makeModel", required = false) String makeModel,
             @RequestParam (value = "power", required = false) Integer power){
         return this.service.update(id, makeModel, power);
     }
 
     @DeleteMapping("/remove/{id}")
-    public Car remove(@PathVariable Integer id){
+    public Car remove(@PathVariable int id){
         Car deleteCar = this.service.getById(id);
         this.service.remove(id);
         return deleteCar;

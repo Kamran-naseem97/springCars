@@ -20,7 +20,7 @@ public class CarServiceList implements carService{
     }
 
     @Override
-    public Car getById(Integer id){
+    public Car getById(int id){
         System.out.println("Car with index " + id + " " + this.garage.get(id));
         return this.garage.get(id);
     }
@@ -44,16 +44,16 @@ public class CarServiceList implements carService{
 
 
     @Override
-    public Car update( Integer id, String makeModel, Integer power){
+    public Car update( int id, String makeModel, Integer power){
         this.garage.get(id).setMakeModel(makeModel);
         this.garage.get(id).setPower(power);
         return this.garage.get(id);
     }
 
     @Override
-    public Car remove(Integer id){
+    public Car remove(int id){
         Car deleteCar = this.garage.get(id);
-        this.garage.remove((Integer) id.intValue());
+        this.garage.remove(id);
         return deleteCar;
     }
 

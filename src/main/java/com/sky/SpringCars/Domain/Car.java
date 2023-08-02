@@ -7,26 +7,31 @@ import javax.persistence.criteria.CriteriaBuilder;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     @Column(unique = false, nullable = true)
     private String makeModel;
     private Integer power;
 
-    public Car(Integer id, String makeModel, Integer power) {
+    public Car( String makeModel, Integer power) {
+        this.makeModel = makeModel;
+        this.power = power;
+    }
+
+    public Car(int id, String makeModel, Integer power) {
         this.id = id;
         this.makeModel = makeModel;
         this.power = power;
     }
 
-//    Default constructor
+    //    Default constructor
     public Car() {
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

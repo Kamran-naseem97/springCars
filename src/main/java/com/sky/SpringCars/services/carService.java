@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface carService {
-    Car getById(Integer id);
+    Car getById(int id);
     Car create(Car car);
     List<Car> create(List<Car> newCar);
     List<Car> getAll();
-    Car update(Integer id, String makeModel, Integer power);
-    Car remove(Integer id);
+    Car update(int id, String makeModel, Integer power);
+    Car remove(int id);
     List<Car> findBymakeModel(String makeModel);
     Integer findPower(String makeModel);
 }

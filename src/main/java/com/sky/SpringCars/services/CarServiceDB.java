@@ -1,6 +1,7 @@
 package com.sky.SpringCars.services;
 
 import com.sky.SpringCars.Domain.Car;
+import com.sky.SpringCars.exceptions.CarNotFoundException;
 import com.sky.SpringCars.repos.carRepo;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,8 @@ public class CarServiceDB implements carService{
     }
 
     @Override
-    public Car getById(Integer id) {
-        Optional<Car> optionalCar = this.repo.findById(id);
-        Car actualCar = optionalCar.get();
+    public Car getById(int id) {
+        Car actualCar = this.repo.findById(id).orElseThrow(() -> new CarNotFoundException());
         return actualCar;
     }
 
@@ -40,7 +40,7 @@ public class CarServiceDB implements carService{
     }
 
     @Override
-    public Car update(Integer id, String makeModel, Integer power) {
+    public Car update(int id, String makeModel, Integer power) {
         Car toUp = this.getById(id);
         if (makeModel != null) toUp.setMakeModel(makeModel);
         if (power != null) toUp.setPower(power);
@@ -48,9 +48,9 @@ public class CarServiceDB implements carService{
     }
 
     @Override
-    public Car remove(Integer id) {
+    public Car remove(int id) {
         Car toDel = this.getById(id);
-        this.repo.deleteById(id.intValue());
+        this.repo.deleteById(id);
         return toDel;
     }
 

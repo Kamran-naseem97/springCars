@@ -12,7 +12,7 @@ public interface carRepo extends JpaRepository<Car, Integer> {
     List<Car> findBymakeModelContainsIgnoreCase(String makeModel);
 
     // JPQL -> Java Persistence Query Language
-    @Query(value = "SELECT POWER FROM CAR WHERE make_Model LIKE '%?1%'", nativeQuery = true)
+    @Query(value = "SELECT POWER FROM CAR WHERE make_Model LIKE %?1%", nativeQuery = true)
 //    @Query("SELECT c.power FROM Car h WHERE c.makeModel = ?1 ")
     Integer findPower(String makeModel);
 }
